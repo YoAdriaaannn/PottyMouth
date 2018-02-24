@@ -1,6 +1,3 @@
-
-
-
 # PottyMouth
 Potty Mouth. A branch from the original Court Counter app made during the Udacity Grow With Google Android Nanodegree program.
 
@@ -20,7 +17,7 @@ For those who wish to try the app out, I have included an ready to go APK file t
 
 Note that this app is optimized for xxhdpi screens in a vertical orientation. It is also rotation locked to prevent distortion of the layout graphics. Future releases will include reactive designs.
 
-KNOWN ISSUES:
+# KNOWN ISSUES:
 
 Total game keeper does keeps increasing games won even after the game has ended. [FIXED]
 
