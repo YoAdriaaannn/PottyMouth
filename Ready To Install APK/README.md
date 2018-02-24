@@ -1,0 +1,1 @@
+#To install this APK file, drag and drop it onto a directory on your device through your PCs file explorer and USB cable. MAC users can use Android file tranfer. Open a file browser on the device you uploaded the apk to. Click the APK and it will install.
