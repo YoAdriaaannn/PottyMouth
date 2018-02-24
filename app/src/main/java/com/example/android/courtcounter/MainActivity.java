@@ -31,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
      */
 
     int scoreTeamA = 0;
+    int winsTeamA = 0;
     /**
      * Set up a variable to keep score for team B
      */
 
     int scoreTeamB = 0;
+    int winsTeamB = 0;
     /**
      * Set up name variables for the players
      */
@@ -90,32 +92,53 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Increase score by 3 for team A
+     * IF score is at winning point then do not increase any more. This routine
+     * follows in all the rest of the button actions.
      */
     public void threePointsForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 3;
-        displayForTeamA(scoreTeamA);
-        playCensorBeep();
-        checkScore();
+
+        if (scoreTeamA >= 50 || scoreTeamB >= 50){
+        scoreTeamA = scoreTeamA + 0;
+        }
+        else {
+            scoreTeamA = scoreTeamA + 3;
+            displayForTeamA(scoreTeamA);
+            playCensorBeep();
+            checkScore();
+        }
+
     }
 
     /**
      * Increase score by 2 for team A
      */
     public void twoPointsForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 2;
-        displayForTeamA(scoreTeamA);
-        playCensorBeep();
-        checkScore();
-    }
+        if (scoreTeamA >= 50 || scoreTeamB >= 50){
+            scoreTeamA = scoreTeamA + 0;
+        }
+        else {
+            scoreTeamA = scoreTeamA + 2;
+            displayForTeamA(scoreTeamA);
+            playCensorBeep();
+            checkScore();
+        }
+        }
+
 
     /**
      * Increase score by 1 for team A
      */
     public void onePointForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 1;
-        displayForTeamA(scoreTeamA);
-        playCensorBeep();
-        checkScore();
+        if (scoreTeamA >= 50 || scoreTeamB >= 50){
+            scoreTeamA = scoreTeamA + 0;
+        }
+        else {
+            scoreTeamA = scoreTeamA + 1;
+            displayForTeamA(scoreTeamA);
+            playCensorBeep();
+            checkScore();
+        }
+
     }
 
 
@@ -139,30 +162,50 @@ public class MainActivity extends AppCompatActivity {
      * Increase score by 3 for team B
      */
     public void threePointsForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 3;
-        displayForTeamB(scoreTeamB);
-        playCensorBeep();
-        checkScore();
+        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+            scoreTeamB = scoreTeamB + 0;
+
+            displayGamesWon();
+        }
+        else {
+            scoreTeamB = scoreTeamB + 3;
+            displayForTeamB(scoreTeamB);
+            playCensorBeep();
+            checkScore();
+        }
+
     }
 
     /**
      * Increase score by 2 for team B
      */
     public void twoPointsForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 2;
-        displayForTeamB(scoreTeamB);
-        playCensorBeep();
-        checkScore();
+        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+            scoreTeamB = scoreTeamB + 0;
+        }
+        else {
+            scoreTeamB = scoreTeamB + 2;
+            displayForTeamB(scoreTeamB);
+            playCensorBeep();
+            checkScore();
+        }
+
     }
 
     /**
      * Increase score by 1 for team B
      */
     public void onePointForForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 1;
-        displayForTeamB(scoreTeamB);
-        playCensorBeep();
-        checkScore();
+        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+            scoreTeamB = scoreTeamB + 0;
+        }
+        else {
+            scoreTeamB = scoreTeamB + 1;
+            displayForTeamB(scoreTeamB);
+            playCensorBeep();
+            checkScore();
+        }
+
     }
 
     /**
@@ -284,23 +327,31 @@ public class MainActivity extends AppCompatActivity {
              *  I basically use getString to gets a value from resources which is the strings called winString1 - etc. I then concatenate
              *  them into one sentence with the player names in variable form             */
 
+            scoreTeamA = scoreTeamA + 0;
 
-
-            winnerString = getString(R.string.winString1) + " " + playerOne + " " + getString(R.string.winString3) + randomString;
+            winnerString = getString(R.string.winString1) + " " + playerOne + " " + getString(R.string.winString3) + " " + randomString;
             TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
+            winsTeamA = winsTeamA +1;
             sadLoser();
             mpBgMusic.stop();
+            displayGamesWon();
             return;
 
         }
         // check to see if team b lost if not go to next
         if (scoreTeamB >= 50) {
-            winnerString = getString(R.string.winString1) + " " + playerTwo + " " + getString(R.string.winString3) + randomString;
+
+            scoreTeamB = scoreTeamB + 0;
+            winnerString = getString(R.string.winString1) + " " + playerTwo + " " + getString(R.string.winString3) + " " +randomString;
             TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
+            winsTeamB = winsTeamB +1;
             sadLoser();
             mpBgMusic.stop();
+            displayGamesWon();
+
+
             return;
 
         } else {
@@ -310,6 +361,13 @@ public class MainActivity extends AppCompatActivity {
             winner.setText(String.valueOf(winnerString));
         }
 
+
+    }
+
+    public void displayGamesWon (){
+        String gamesWonMessage = "The total games won for " + playerOne + " is: " + winsTeamA + "\n" + "The total games won for " + playerTwo + " is: " + winsTeamB;
+        TextView gamesWon = findViewById(R.id.text_games_won);
+        gamesWon.setText(String.valueOf(gamesWonMessage));
 
     }
 }
