@@ -12,3 +12,15 @@ The UI has a locked orientation to prevent the background image from not looking
 The app also makes use of conditional statements and object creation which was not discussed yet, however I was on a roll.
 
 A random generator is used to select a random string from the resources file called array.xml One can easily create more random messages or take advantage of this to reskin the entire app into a different game.
+
+For those who wish to try the app out, I have included an ready to go APK file to install on your device. Just drag and drop to your device and click to install. 
+
+Note that this app is optimized for xxhdpi screens in a vertical orientation. It is also rotation locked to prevent distortion of the layout graphics. Future releases will include reactive designs.
+
+# KNOWN ISSUES:
+
+Total game keeper does keeps increasing games won even after the game has ended. [FIXED]
+
+Game does not auto start background music loop when it ends.
+
+Game does not terminate on two back clicks.
