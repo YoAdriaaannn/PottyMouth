@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This string will be used to store winner message.
      */
-    String winnerString ;
+    String winnerString;
     /**
      * Sound effects
      */
@@ -97,10 +97,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void threePointsForTeamA(View v) {
 
-        if (scoreTeamA >= 50 || scoreTeamB >= 50){
-        scoreTeamA = scoreTeamA + 0;
-        }
-        else {
+        if (scoreTeamA >= 50 || scoreTeamB >= 50) {
+            scoreTeamA = scoreTeamA + 0;
+        } else {
             scoreTeamA = scoreTeamA + 3;
             displayForTeamA(scoreTeamA);
             playCensorBeep();
@@ -113,26 +112,24 @@ public class MainActivity extends AppCompatActivity {
      * Increase score by 2 for team A
      */
     public void twoPointsForTeamA(View v) {
-        if (scoreTeamA >= 50 || scoreTeamB >= 50){
+        if (scoreTeamA >= 50 || scoreTeamB >= 50) {
             scoreTeamA = scoreTeamA + 0;
-        }
-        else {
+        } else {
             scoreTeamA = scoreTeamA + 2;
             displayForTeamA(scoreTeamA);
             playCensorBeep();
             checkScore();
         }
-        }
+    }
 
 
     /**
      * Increase score by 1 for team A
      */
     public void onePointForTeamA(View v) {
-        if (scoreTeamA >= 50 || scoreTeamB >= 50){
+        if (scoreTeamA >= 50 || scoreTeamB >= 50) {
             scoreTeamA = scoreTeamA + 0;
-        }
-        else {
+        } else {
             scoreTeamA = scoreTeamA + 1;
             displayForTeamA(scoreTeamA);
             playCensorBeep();
@@ -162,12 +159,11 @@ public class MainActivity extends AppCompatActivity {
      * Increase score by 3 for team B
      */
     public void threePointsForTeamB(View v) {
-        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+        if (scoreTeamB >= 50 || scoreTeamA >= 50) {
             scoreTeamB = scoreTeamB + 0;
 
             displayGamesWon();
-        }
-        else {
+        } else {
             scoreTeamB = scoreTeamB + 3;
             displayForTeamB(scoreTeamB);
             playCensorBeep();
@@ -180,10 +176,9 @@ public class MainActivity extends AppCompatActivity {
      * Increase score by 2 for team B
      */
     public void twoPointsForTeamB(View v) {
-        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+        if (scoreTeamB >= 50 || scoreTeamA >= 50) {
             scoreTeamB = scoreTeamB + 0;
-        }
-        else {
+        } else {
             scoreTeamB = scoreTeamB + 2;
             displayForTeamB(scoreTeamB);
             playCensorBeep();
@@ -196,10 +191,9 @@ public class MainActivity extends AppCompatActivity {
      * Increase score by 1 for team B
      */
     public void onePointForForTeamB(View v) {
-        if (scoreTeamB >= 50 || scoreTeamA >= 50){
+        if (scoreTeamB >= 50 || scoreTeamA >= 50) {
             scoreTeamB = scoreTeamB + 0;
-        }
-        else {
+        } else {
             scoreTeamB = scoreTeamB + 1;
             displayForTeamB(scoreTeamB);
             playCensorBeep();
@@ -332,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
             winnerString = getString(R.string.winString1) + " " + playerOne + " " + getString(R.string.winString3) + " " + randomString;
             TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
-            winsTeamA = winsTeamA +1;
+            winsTeamA = winsTeamA + 1;
             sadLoser();
             mpBgMusic.stop();
             displayGamesWon();
@@ -343,10 +337,10 @@ public class MainActivity extends AppCompatActivity {
         if (scoreTeamB >= 50) {
 
             scoreTeamB = scoreTeamB + 0;
-            winnerString = getString(R.string.winString1) + " " + playerTwo + " " + getString(R.string.winString3) + " " +randomString;
+            winnerString = getString(R.string.winString1) + " " + playerTwo + " " + getString(R.string.winString3) + " " + randomString;
             TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
-            winsTeamB = winsTeamB +1;
+            winsTeamB = winsTeamB + 1;
             sadLoser();
             mpBgMusic.stop();
             displayGamesWon();
@@ -364,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void displayGamesWon (){
+    public void displayGamesWon() {
         String gamesWonMessage = "The total games won for " + playerOne + " is: " + winsTeamA + "\n" + "The total games won for " + playerTwo + " is: " + winsTeamB;
         TextView gamesWon = findViewById(R.id.text_games_won);
         gamesWon.setText(String.valueOf(gamesWonMessage));
