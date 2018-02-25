@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mpCensorBeep;
     MediaPlayer mpSadLoser;
     MediaPlayer mpBgMusic;
-    MediaPlayer mpTest;
+   
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
