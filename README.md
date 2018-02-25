@@ -1,3 +1,4 @@
+
 # PottyMouth
 Potty Mouth. A branch from the original Court Counter app made during the Udacity Grow With Google Android Nanodegree program.
 
@@ -24,3 +25,7 @@ Total game keeper keeps increasing games won even after the game has ended. [FIX
 Game does not auto start background music loop when it ends.
 
 Game does not terminate on two back clicks.
+
+#Screen Shots
+![alt text](screenshotOne.png "Screen A")
+![alt text](screenshotTwo.png "Screen B")
