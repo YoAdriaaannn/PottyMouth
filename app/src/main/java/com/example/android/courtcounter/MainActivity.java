@@ -17,15 +17,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.util.Random;
+import org.w3c.dom.Text;
 
+import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     /**
      * Random generator
      */
 
-    private static final Random rgenerator = new Random();
+    public static final Random rgenerator = new Random();
     /**
      * Set up a variable to keep score for team A
      */
@@ -51,16 +52,27 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Sound effects
      */
-    MediaPlayer mpToiletFlush;
-    MediaPlayer mpCensorBeep;
-    MediaPlayer mpSadLoser;
-    MediaPlayer mpBgMusic;
-   
+    public MediaPlayer mpToiletFlush;
+    public MediaPlayer mpCensorBeep;
+    public MediaPlayer mpSadLoser;
+    public MediaPlayer mpBgMusic;
+
+    /**
+     * Variables for text fields.
+     */
+    public TextView gamesWon;
+    public TextView winner;
+    public TextView scoreViewA;
+    public TextView scoreViewB;
+    public TextView nameViewA;
+    public TextView nameViewB;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         /**
          * BG Music start
          *
@@ -71,6 +83,19 @@ public class MainActivity extends AppCompatActivity {
         displayPlayerTwoName(playerTwo);
         displayPlayerOneName(playerOne);
 
+        //init variable for games won message
+        gamesWon = findViewById(R.id.text_games_won);
+
+        //init variable for winner message
+        winner = findViewById(R.id.text_who_is_winner);
+
+        //init score variables
+        scoreViewA = findViewById(R.id.team_a_score);
+        scoreViewB = findViewById(R.id.team_b_score);
+
+        //init player name variables
+        //nameViewA = findViewById(R.id.team_a_tag);
+       // nameViewB = findViewById(R.id.team_b_tag);
     }
 
     /**
@@ -78,16 +103,15 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public void displayForTeamA(int score) {
-        TextView scoreView = findViewById(R.id.team_a_score);
-        scoreView.setText(String.valueOf(score));
+        scoreViewA.setText(String.valueOf(score));
     }
 
     /**
      * Display name of player two
      */
     public void displayPlayerOneName(String name) {
-        TextView scoreView = findViewById(R.id.team_a_tag);
-        scoreView.setText(String.valueOf(name));
+        nameViewA = findViewById(R.id.team_a_tag);
+        nameViewA.setText(String.valueOf(name));
     }
 
     /**
@@ -143,16 +167,15 @@ public class MainActivity extends AppCompatActivity {
      * Displays the given score for Team B
      */
     public void displayForTeamB(int score) {
-        TextView scoreView = findViewById(R.id.team_b_score);
-        scoreView.setText(String.valueOf(score));
+             scoreViewB.setText(String.valueOf(score));
     }
 
     /**
      * Display name of player two
      */
     public void displayPlayerTwoName(String name) {
-        TextView scoreView = findViewById(R.id.team_b_tag);
-        scoreView.setText(String.valueOf(name));
+        nameViewB = findViewById(R.id.team_b_tag);
+        nameViewB.setText(String.valueOf(name));
     }
 
     /**
@@ -213,7 +236,6 @@ public class MainActivity extends AppCompatActivity {
         winnerString = "Ready to play again!";
         toiletFlush();
         bgMusic();
-        TextView winner = findViewById(R.id.text_who_is_winner);
         winner.setText(String.valueOf(winnerString));
     }
 
@@ -222,23 +244,19 @@ public class MainActivity extends AppCompatActivity {
      */
     public void resetTeamA(View v) {
         scoreTeamA = 0;
-
         displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
         winnerString = playerOne + " " + getString(R.string.playerReset);
         toiletFlush();
-        TextView winner = findViewById(R.id.text_who_is_winner);
         winner.setText(String.valueOf(winnerString));
     }
 
     public void resetTeamB(View v) {
         scoreTeamB = 0;
-
         displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
         winnerString = playerTwo + " " + getString(R.string.playerReset);
         toiletFlush();
-        TextView winner = findViewById(R.id.text_who_is_winner);
         winner.setText(String.valueOf(winnerString));
     }
 
@@ -324,7 +342,6 @@ public class MainActivity extends AppCompatActivity {
             scoreTeamA = scoreTeamA + 0;
 
             winnerString = getString(R.string.winString1) + " " + playerOne + " " + getString(R.string.winString3) + " " + randomString;
-            TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
             winsTeamA = winsTeamA + 1;
             sadLoser();
@@ -338,7 +355,6 @@ public class MainActivity extends AppCompatActivity {
 
             scoreTeamB = scoreTeamB + 0;
             winnerString = getString(R.string.winString1) + " " + playerTwo + " " + getString(R.string.winString3) + " " + randomString;
-            TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
             winsTeamB = winsTeamB + 1;
             sadLoser();
@@ -351,7 +367,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // If no one has lost yet display a message stating the game is still on
             winnerString = getString(R.string.winString2);
-            TextView winner = findViewById(R.id.text_who_is_winner);
             winner.setText(String.valueOf(winnerString));
         }
 
@@ -359,8 +374,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void displayGamesWon() {
-        String gamesWonMessage = "The total games won for " + playerOne + " is: " + winsTeamA + "\n" + "The total games won for " + playerTwo + " is: " + winsTeamB;
-        TextView gamesWon = findViewById(R.id.text_games_won);
+        String gamesWonMessage = getString(R.string.totalScoreStringA) + playerOne + getString(R.string.totalScoreStringB) + winsTeamA + "\n" + getString(R.string.totalScoreStringA) + playerTwo + getString(R.string.totalScoreStringB) + winsTeamB;
         gamesWon.setText(String.valueOf(gamesWonMessage));
 
     }
