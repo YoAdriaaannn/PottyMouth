@@ -67,9 +67,9 @@ public class Main2Activity extends Activity {
 
                 Toast toast = new Toast(getApplicationContext());
                 toast.setGravity(Gravity.TOP | Gravity.LEFT, 0, 0);
-                playersOutputText = ("Get ready to play " + etPlayer2.getText().toString() + " and " + etPlayer1.getText().toString());
+                playersOutputText = (getString(R.string.playerInputStringA) + etPlayer2.getText().toString() + getString(R.string.playerInputStringB) + etPlayer1.getText().toString());
 
-                Toast.makeText(Main2Activity.this, playersOutputText, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Main2Activity.this, playersOutputText, Toast.LENGTH_LONG).show();
 
                 //play the sound effect
                 MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.toiletflush);

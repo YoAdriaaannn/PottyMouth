@@ -17,7 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+
 
 import java.util.Random;
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     public static final Random rgenerator = new Random();
+
     /**
      * Set up a variable to keep score for team A
      */
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
     int scoreTeamB = 0;
     int winsTeamB = 0;
     /**
-     * Set up name variables for the players
+     * Set up name variables for the players and grab them from the EditText on previous activity
+     *
      */
 
     String playerTwo = Main2Activity.etPlayer2.getText().toString();
@@ -73,10 +75,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        /**
-         * BG Music start
-         *
-         */
+       // Start the background music
         bgMusic();
 
         // Call our first methods to display player names
@@ -108,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Display name of player two
+     * @param name name of players from
      */
     public void displayPlayerOneName(String name) {
         nameViewA = findViewById(R.id.team_a_tag);
@@ -115,14 +115,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     *
      * Increase score by 3 for team A
      * IF score is at winning point then do not increase any more. This routine
      * follows in all the rest of the button actions.
+     *
      */
     public void threePointsForTeamA(View v) {
 
         if (scoreTeamA >= 50 || scoreTeamB >= 50) {
-            scoreTeamA = scoreTeamA + 0;
+            scoreTeamA = scoreTeamA;
         } else {
             scoreTeamA = scoreTeamA + 3;
             displayForTeamA(scoreTeamA);
@@ -137,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void twoPointsForTeamA(View v) {
         if (scoreTeamA >= 50 || scoreTeamB >= 50) {
-            scoreTeamA = scoreTeamA + 0;
+            scoreTeamA = scoreTeamA;
         } else {
             scoreTeamA = scoreTeamA + 2;
             displayForTeamA(scoreTeamA);
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onePointForTeamA(View v) {
         if (scoreTeamA >= 50 || scoreTeamB >= 50) {
-            scoreTeamA = scoreTeamA + 0;
+            scoreTeamA = scoreTeamA;
         } else {
             scoreTeamA = scoreTeamA + 1;
             displayForTeamA(scoreTeamA);
@@ -165,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Displays the given score for Team B
+     * @param score player total score
      */
     public void displayForTeamB(int score) {
              scoreViewB.setText(String.valueOf(score));
@@ -181,9 +184,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Increase score by 3 for team B
      */
+
     public void threePointsForTeamB(View v) {
         if (scoreTeamB >= 50 || scoreTeamA >= 50) {
-            scoreTeamB = scoreTeamB + 0;
+            scoreTeamB = scoreTeamB;
 
             displayGamesWon();
         } else {
@@ -198,9 +202,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Increase score by 2 for team B
      */
+
     public void twoPointsForTeamB(View v) {
         if (scoreTeamB >= 50 || scoreTeamA >= 50) {
-            scoreTeamB = scoreTeamB + 0;
+            scoreTeamB = scoreTeamB;
         } else {
             scoreTeamB = scoreTeamB + 2;
             displayForTeamB(scoreTeamB);
@@ -213,9 +218,10 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Increase score by 1 for team B
      */
+
     public void onePointForForTeamB(View v) {
         if (scoreTeamB >= 50 || scoreTeamA >= 50) {
-            scoreTeamB = scoreTeamB + 0;
+            scoreTeamB = scoreTeamB;
         } else {
             scoreTeamB = scoreTeamB + 1;
             displayForTeamB(scoreTeamB);
@@ -228,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Reset the game
      */
+
     public void resetScore(View v) {
         scoreTeamA = 0;
         scoreTeamB = 0;
@@ -242,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Players eat a Tide Pod washes out that potty mouth and resets score
      */
+
     public void resetTeamA(View v) {
         scoreTeamA = 0;
         displayForTeamA(scoreTeamA);
@@ -362,7 +370,6 @@ public class MainActivity extends AppCompatActivity {
             displayGamesWon();
 
 
-            return;
 
         } else {
             // If no one has lost yet display a message stating the game is still on
