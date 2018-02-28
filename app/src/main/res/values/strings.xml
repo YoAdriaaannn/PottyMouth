@@ -43,5 +43,6 @@
     <string name="totalScoreStringB">\u0020 is \u0020 </string>
     <string name="playerInputStringA">Get ready to play</string>
     <string name="playerInputStringB">and</string>
+    <string name="winnerMessage2">Ready to play again!</string>
 
 </resources>
